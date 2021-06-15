@@ -1,7 +1,7 @@
 name: Node.js CI
 
 on:
-  push:
+ push:
     branches: [main]
   pull_request:
     branches: [main]
@@ -37,3 +37,10 @@ jobs:
           image-name: github-actions-test
           dockerfile: Dockerfile
 
+      - name: HTTP Request Action
+        uses: fjogeleit/http-request-action@v1.8.0
+          with:
+            url: $${{ secrets.DOCKER_API_URL }}
+            method: POST
+            customHeaders: 
+              X-Auth: ${{DOCKER_API_AUTH}}
