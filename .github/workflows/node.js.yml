@@ -38,9 +38,9 @@ jobs:
 #          dockerfile: Dockerfile
 
       - name: Send image update webhook
-        uses: fjogeleit/http-request-action@v1.8.0
+        uses: Satak/webrequest-action@v1.2.3
         with:
           url: https://docker.sneakyrp.com/update-test
-          method: 'POST'
-          bearerToken: ${{ secrets.DOCKER_API_AUTH }}
+          method: POST
+          headers: '{"X-Auth": "Token ${{ secrets.DOCKER_API_AUTH }}"}'
         
