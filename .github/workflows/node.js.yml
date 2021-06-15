@@ -15,32 +15,32 @@ jobs:
         node-version: [16.x]
     
     steps:
-      - name: Check out branch
-        uses: actions/checkout@v2
-    
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm run test
-    
-      - name: Compile Typescript
-        run: npm run build
-    
-      - name: Build and Publish latest Docker image
-        uses: VaultVulp/gp-docker-action@1.1.8
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          image-name: github-actions-test
-          dockerfile: Dockerfile
+#      - name: Check out branch
+#        uses: actions/checkout@v2
+#    
+#      - name: Set up Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v2
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: Install dependencies
+#        run: npm ci
+#      - name: Run tests
+#        run: npm run test
+#    
+#      - name: Compile Typescript
+#        run: npm run build
+#    
+#      - name: Build and Publish latest Docker image
+#        uses: VaultVulp/gp-docker-action@1.1.8
+#        with:
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+#          image-name: github-actions-test
+#          dockerfile: Dockerfile
 
-      - name: HTTP Request Action
+      - name: Send image update webhook
         uses: fjogeleit/http-request-action@v1.8.0
         with:
-          url: ${{ secrets.DOCKER_API_URL }}
+          url: https://webhook.site/fb00b99f-fd27-48a4-b24c-7080434ceedf
           method: 'POST'
-          bearerToken: ${{ secrets.DOCKER_API_AUTH }}
+          bearerToken: TEST
         
