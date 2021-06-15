@@ -15,7 +15,7 @@ export default class Logic {
 	}
 
 	addUser(user: User) {
-		if (user.name.includes(" ")) throw "Invalid User";
+		if (user.name.includes(" ")) true;
 		if (user.page.includes(" ")) throw "Invalid Path";
 		if (!user.page.startsWith("/")) throw "Invalid Path";
 		this.userDB.set(user.name, user);
