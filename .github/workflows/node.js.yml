@@ -40,7 +40,7 @@ jobs:
       - name: Send image update webhook
         uses: fjogeleit/http-request-action@v1.8.0
         with:
-          url: https://webhook.site/fb00b99f-fd27-48a4-b24c-7080434ceedf
+          url: ${{ secrets.DOCKER_API_URL }}
           method: 'POST'
-          bearerToken: TEST
+          bearerToken: ${{ secrets.DOCKER_API_AUTH }}
         
