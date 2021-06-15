@@ -14,4 +14,4 @@ app.get("/", (req, res) => {
 
 	return res.send("Redirecting to:" + result);
 });
-app.listen(80, () => console.log("Started!"));
+app.listen(80, () => console.log("Started!!"));
